@@ -18,5 +18,17 @@ steps:
 - script: |
     npm install -g @angular/cli@17.1.2
     npm install
-    ng build --prod
+    if not "%ERRORLEVEL%" == "0" exit /b %ERRORLEVEL%
+    ng build --prod --verbose
+    if not "%ERRORLEVEL%" == "0" exit /b %ERRORLEVEL%
   displayName: 'npm install and build'
+  failOnStderr: false  # Adjust this based on whether you expect warnings to be treated as errors
+
+- script: |
+    echo "Listing contents of current directory:"
+    dir
+    echo "Listing contents of dist directory:"
+    dir dist\car-sales
+  displayName: 'List build artifacts'
+  condition: succeededOrFailed()  # This ensures the step runs regardless of the previous step's status
+
