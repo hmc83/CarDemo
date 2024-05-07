@@ -1,0 +1,50 @@
+<div class="mx-auto mt-3" style="max-width: 600px; padding: 24px">
+
+    <!-- Error Box -->
+    <div class="text-center py-3 mb-4 border border-danger" *ngIf="errorMessage">
+        <img src="../../assets/red-alert-icon.svg" width="30" class="me-4"/>
+        <span>{{errorMessage}}</span>
+    </div>
+
+    <!-- Loading Box -->
+    <div></div>
+
+    <!-- Form -->
+    <form (ngSubmit)="signUpClicked()" [formGroup]="signUpFormGroup">
+        <div class="mb-4">
+            <label for="email" class="fw-bold mb-2">E-Mail</label>
+            <input type="email" id="email" class="form-control" name="email" formControlName="email"/>
+            <div *ngIf="signUpFormGroup.get('email').invalid&&signUpFormGroup.get('email').touched">
+                <span *ngIf="signUpFormGroup.get('email').errors['required']" class="text-danger">Email is required. </span>
+                <span *ngIf="signUpFormGroup.get('email').errors['email']" class="text-danger">Please enter proper email. </span>
+            </div>
+        </div>
+    
+        <div class="mb-4">
+            <label for="password" class="fw-bold mb-2">Password</label>
+            <input type="password" id="password" class="form-control" name="password" formControlName="password"/>
+            <div *ngIf="signUpFormGroup.get('password').invalid&&signUpFormGroup.get('password').touched">
+                <span *ngIf="signUpFormGroup.get('password').errors['required']" class="text-danger">Password is required. </span>
+                <span *ngIf="signUpFormGroup.get('password').errors['minlength']" class="text-danger">Password requires a minimum of 6 characters. </span>
+            </div>
+        </div>
+    
+        <div class="mb-4">
+            <label for="confirmPassword" class="fw-bold mb-2">Confirm Password</label>
+            <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" required minlength="6" formControlName="confirmPassword"/>
+            <div *ngIf="signUpFormGroup.get('confirmPassword').invalid&&signUpFormGroup.get('confirmPassword').touched">
+                <span *ngIf="signUpFormGroup.get('confirmPassword').errors['required']" class="text-danger">Please confirm password. </span>
+                <span *ngIf="signUpFormGroup.get('confirmPassword').errors['minlength']" class="text-danger">Please enter a minimum of 6 characters. </span>
+                <span *ngIf="signUpFormGroup.get('confirmPassword').errors['match']" class="text-danger">Passwords do not match. </span>
+            </div>
+        </div>
+    
+        <div class="mb-4">
+            <button class="btn btn-primary" type="submit" [disabled]="signUpFormGroup.invalid">Sign Up</button>
+            <!-- <button class="btn btn-primary" type="submit">Sign Up</button> -->
+        </div>
+
+        <div class="mb-4 text-center">Already registered with Carsales? <a [routerLink]="['/auth', 'signin']">Sign in</a></div>
+    </form>
+</div>
+

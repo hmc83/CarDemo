@@ -1,0 +1,15 @@
+<div class="container-xxl my-3">
+    <div class="row">
+        <!-- Box A -->
+        <div class="col-12 col-md-auto">
+            <app-filter (categoryEmitter)="category=$event"></app-filter>
+        </div>
+        
+        <!-- Box B -->
+        <div class="col-12 col-md ">
+          <app-cars-list [mode]="category"></app-cars-list>
+        </div>
+      </div>
+</div>
+
+  

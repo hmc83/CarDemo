@@ -1,0 +1,21 @@
+<div class="mx-auto" style="max-width: 800px; padding: 12px">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Car</th>
+        <th scope="col">Price</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let watchedCar of watchedCars; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td><a [routerLink]="['/car', watchedCar.ownerId, watchedCar.entryId]">{{watchedCar.title}}</a></td>
+        <td>${{watchedCar.price | format}}</td>
+        <td><i class="fa-regular fa-trash-can" (click)="removeClicked(watchedCar.watchlistEntryId)" style="cursor: pointer;"></i></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="watchedCars.length === 0"> You have no watched cars yet!</p>
+</div>

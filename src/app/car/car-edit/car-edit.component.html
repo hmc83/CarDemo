@@ -1,0 +1,43 @@
+<form (ngSubmit)="saveClicked()" #editForm="ngForm">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" class="form-control" name="title" [ngModel]="car.title" #title="ngModel" required/>
+        <span *ngIf="title.invalid" class="text-danger">This field is required!</span>
+    </div>
+
+    <div class="mb-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="petrol" name="engine" value="petrol" [ngModel]="car.engine" required>
+            <label class="form-check-label" for="petrol">Petrol</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="electric" name="engine" value="electric" [ngModel]="car.engine" required>
+            <label class="form-check-label" for="electric">Electric</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="kilometres" class="form-label">Kilometres</label>
+        <input type="number" id="kilometres" class="form-control" name="kilometres" [ngModel]="car.kilometres" #kilometres="ngModel" required/>
+        <span *ngIf="kilometres.invalid" class="text-danger">This field is required!</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" id="price" class="form-control" name="price" [ngModel]="car.price" #price="ngModel" required/>
+        <span *ngIf="price.invalid" class="text-danger">This field is required!</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="imagePath" class="form-label">Image Path</label>
+        <input type="text" id="imagePath" class="form-control" name="imagePath" [ngModel]="car.imagePath" #imagePath="ngModel" required/>
+        <span *ngIf="imagePath.invalid" class="text-danger">This field is required!</span>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="editForm.invalid">Save</button>
+    <button type="button" class="btn btn-primary" (click)="resetClicked()">Reset</button>
+    <button type="button" class="btn btn-warning" (click)="cancelClicked()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="deleteClicked()">Delete</button>
+</form>
+
+<ng-template appPlaceholder></ng-template>

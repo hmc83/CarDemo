@@ -1,0 +1,13 @@
+.fa-regular:hover {
+    color: #DC4C64;
+}
+
+.fa-heart {
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%; /* or a specific px value */
+    height: 250px; /* or whatever height you desire */
+    object-fit: cover; /* or 'contain' for no cropping */
+}

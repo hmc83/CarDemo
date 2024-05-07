@@ -1,0 +1,47 @@
+
+<div class="mx-auto" style="max-width: 800px; padding: 12px">
+    <h3>Sell Car</h3>
+    <form (ngSubmit)="SubmitClicked()" #sellForm="ngForm">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" class="form-control" name="title" required ngModel #title="ngModel"/>
+            <span *ngIf="title.invalid&&title.touched" class="text-danger">This field is required!</span>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="petrol" name="engine" value="petrol" required ngModel>
+                <label class="form-check-label" for="petrol">Petrol</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="electric" name="engine" value="electric" required ngModel>
+                <label class="form-check-label" for="electric">Electric</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="kilometres" class="form-label">Kilometres</label>
+            <input type="number" id="kilometres" class="form-control" name="kilometres" required ngModel #kilometres="ngModel"/>
+            <span *ngIf="kilometres.invalid&&kilometres.touched" class="text-danger">This field is required!</span>
+        </div>
+    
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" id="price" class="form-control" name="price" required ngModel #price="ngModel"/>
+            <span *ngIf="price.invalid&&price.touched" class="text-danger">This field is required!</span>
+        </div>
+    
+        <div class="mb-3">
+            <label for="imagePath" class="form-label">Image Path</label>
+            <input type="text" id="imagePath" class="form-control" name="imagePath" required ngModel #imagePath="ngModel"/>
+            <span *ngIf="imagePath.invalid&&imagePath.touched" class="text-danger">This field is required!</span>
+        </div>
+    
+        <div>
+            <img [src]="imagePath.value" class="img-responsive" style="max-height: 300px">
+        </div>
+
+        <button class="btn btn-primary" [disabled]="sellForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="ClearClicked()">Clear</button>
+    </form>
+</div>

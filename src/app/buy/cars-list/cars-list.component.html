@@ -1,0 +1,10 @@
+
+<div class="container-fluid">
+    <h3>{{count}} {{mode}} cars for sale</h3>
+    <div class="row px-1 py-3 bg-light rounded">
+        <div class="col-xl-4 col-sm-6 col-12 mb-3" *ngFor="let car of cars">
+            <app-car-preview [carToPreview]="car" [watchlistEntryId]="getWatchedListEntryId(car)"></app-car-preview>
+        </div>
+    </div>
+</div>
+

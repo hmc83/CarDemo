@@ -1,0 +1,14 @@
+.input-group:focus-within {
+  box-shadow: 0 0 0 .25rem rgba(13, 110, 253, 0.25); /* Bootstrap's default focus shadow */  
+  border-radius: .375rem;
+}
+  
+.input-group:focus-within .form-control {
+  box-shadow: none;
+  border: 1px solid #dee2e6;
+}
+
+.input-group.invalid {
+  border: 1px solid red;
+  border-radius: .375rem;
+}

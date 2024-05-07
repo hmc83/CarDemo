@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #e3f2fd;">
+    <div class="container-xxl">
+      <a class="navbar-brand" [routerLink]="['/']" style="margin-right: 140px; font-size: 26px; font-weight: 600">
+        <img [src]="'assets/carlogo.png'" width="120">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: space-between">
+        <ul class="navbar-nav" style="font-weight: 500">
+          <li class="nav-item me-4" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+            <a class="nav-link px-4" [routerLink]="['buy']" >Buy</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link px-4" [routerLink]="['sell']" >Sell</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link px-4" [routerLink]="['watchlist']" >Watchlist</a>
+          </li>
+        </ul>
+        <a class="px-4" *ngIf="!isAuthenticated" [routerLink]="['/auth','signin']"><i class="fa-solid fa-user me-2"></i> Log In / Sign Up</a>
+        <a class="px-4" *ngIf="isAuthenticated" style="cursor: pointer" (click)="logOutClicked()"><i class="fa fa-sign-out me-2"></i> Log Out</a>
+      </div>
+    </div>
+</nav>
+
+
+
+
+

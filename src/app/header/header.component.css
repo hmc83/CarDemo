@@ -1,0 +1,14 @@
+
+@media (min-width: 768px) {
+    .navbar-nav .active { 
+        border-bottom: 4px solid orange; 
+
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav .active { 
+        text-decoration: underline 2px solid orange; 
+        text-underline-offset: 5px;
+    }
+}

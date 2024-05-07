@@ -1,0 +1,23 @@
+.backdrop {
+    position: fixed;  /* takes element out of the flow and position it in respect to the top and left of view port. */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 5000;    /*  such that the backdrop is on top of things on the page */
+}
+
+.alertbox {
+   position: fixed;
+   top: 50%;   /*top, left transoform here positions the box at the centre of the viewport */
+   left: 50%;
+   transform: translate(-50%, -50%); 
+   width: 70%;
+   max-width: 600px;
+   min-height: 100px;
+   padding: 16px;
+   z-index: 10000;
+   background: white;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}

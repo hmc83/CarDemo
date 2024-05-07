@@ -1,0 +1,10 @@
+<!-- Backdrop -->
+<div class="backdrop" (click)="cancelClicked()"></div>
+
+<!-- Alert Box -->
+<div class="alertbox">
+    <div class="text-end" style="margin-right: -8px; margin-top: -16px; cursor: pointer;" (click)="cancelClicked()"><i class="fa fa-close"></i></div>
+    <p>{{message}}</p>
+    <button class="btn btn-danger me-2" (click)="confirmClicked()">Yes</button>
+    <button class="btn btn-primary" (click)="cancelClicked()">Cancel</button>
+</div>

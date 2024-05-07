@@ -1,0 +1,12 @@
+<div class="container-xxl my-3">
+    <a [routerLink]="['/buy']" style="cursor: pointer">Back to cars</a>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <img class="img-fluid rounded" [src]="imagePath" alt="Card image">
+        </div>
+        <div class="col-lg-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
