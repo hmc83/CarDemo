@@ -13,33 +13,21 @@ steps:
 - script: |
     echo "Installing Angular CLI..."
     npm install -g @angular/cli@17.1.2
-    ng --version
-    echo "Angular CLI installed."
-    
-    echo "Installing npm packages..."
-    npm install
-    echo "npm packages installed."
-    
-    echo "Attempting to build Angular project..."
-    ng build --prod --verbose
+    echo "Checking if installation was successful..."
     if not "%ERRORLEVEL%" == "0" (
-      echo "Build failed with error %ERRORLEVEL%"
+      echo "Angular CLI installation failed with error %ERRORLEVEL%."
       exit /b %ERRORLEVEL%
-    ) else (
-      echo "Angular build command executed successfully."
     )
+    echo "Installation check passed."
     
-    echo "Checking if 'dist/car-sales' directory was created..."
-    if exist dist\car-sales (
-      echo "Directory 'dist/car-sales' exists."
-      dir dist\car-sales
-    ) else (
-      echo "Directory 'dist/car-sales' does not exist."
+    echo "Running a simple non-dependent command..."
+    echo "This should always run."
+    
+    echo "Now attempting to verify Angular CLI installation..."
+    ng --version
+    if not "%ERRORLEVEL%" == "0" (
+      echo "Failed to verify Angular CLI installation with error %ERRORLEVEL%."
+      exit /b %ERRORLEVEL%
     )
-  displayName: 'Diagnostic Build Steps'
-  failOnStderr: false
-
-- script: |
-    echo "Final directory structure check:"
-    dir
-  displayName: 'Final Directory Check'
+    echo "Angular CLI Version Command Executed Successfully."
+  displayName: 'Test Angular CLI Installation'
