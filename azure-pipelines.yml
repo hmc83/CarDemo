@@ -31,11 +31,13 @@ steps:
       echo "Angular build failed."
       exit /b %ERRORLEVEL%
     )
+    
+    echo "Build process completed successfully."
   displayName: 'Install and Build'
 
 - script: |
     echo "Current directory:"
-    pwd
+    cd
     echo "Listing directory contents:"
     dir
     
