@@ -1,3 +1,8 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
 trigger:
 - master
 
@@ -11,23 +16,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    echo "Installing Angular CLI..."
+    cd hmc83.CarDemo/
     npm install -g @angular/cli@17.1.2
-    echo "Checking if installation was successful..."
-    if not "%ERRORLEVEL%" == "0" (
-      echo "Angular CLI installation failed with error %ERRORLEVEL%."
-      exit /b %ERRORLEVEL%
-    )
-    echo "Installation check passed."
-    
-    echo "Running a simple non-dependent command..."
-    echo "This should always run."
-    
-    echo "Now attempting to verify Angular CLI installation..."
-    ng --version
-    if not "%ERRORLEVEL%" == "0" (
-      echo "Failed to verify Angular CLI installation with error %ERRORLEVEL%."
-      exit /b %ERRORLEVEL%
-    )
-    echo "Angular CLI Version Command Executed Successfully."
-  displayName: 'Test Angular CLI Installation'
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
+  workingDirectory: '$(Build.SourcesDirectory)'
