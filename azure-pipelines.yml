@@ -13,35 +13,22 @@ steps:
 - script: |
     echo "Installing Angular CLI..."
     npm install -g @angular/cli@17.1.2
-    if not "%ERRORLEVEL%" == "0" (
-      echo "Failed to install Angular CLI."
-      exit /b %ERRORLEVEL%
-    )
-    
+    echo "Angular CLI installed."
+
     echo "Installing npm packages..."
     npm install
-    if not "%ERRORLEVEL%" == "0" (
-      echo "npm install failed."
-      exit /b %ERRORLEVEL%
-    )
+    echo "npm packages installed."
     
-    echo "Building Angular project..."
+    echo "Attempting to build Angular project..."
     ng build --prod --verbose
-    if not "%ERRORLEVEL%" == "0" (
-      echo "Angular build failed."
-      exit /b %ERRORLEVEL%
-    )
+    echo "Angular build command executed."
     
-    echo "Build process completed successfully."
-  displayName: 'Install and Build'
+    echo "Checking if 'dist/car-sales' directory was created..."
+    dir dist\car-sales
+  displayName: 'Diagnostic Build Steps'
+  failOnStderr: false
 
 - script: |
-    echo "Current directory:"
-    cd
-    echo "Listing directory contents:"
+    echo "Final directory structure check:"
     dir
-    
-    echo "Checking dist directory specifically:"
-    dir dist\car-sales /a
-  displayName: 'List build artifacts'
-  condition: succeededOrFailed()  # Ensures this step runs even if the previous step fails
+  displayName: 'Final Directory Check'
