@@ -12,7 +12,7 @@ pool:
 steps:  
 - task: NodeTool@0  
   inputs:  
-    versionSpec: '18.13.0'  
+    versionSpec: '20.11.0'  
   displayName: 'Install Node.js'  
 - task: Npm@1  
   displayName: 'Angular CLI'  
