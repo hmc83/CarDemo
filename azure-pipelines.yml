@@ -23,6 +23,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(agent.builddirectory)/dist'
+    PathtoPublish: '$(agent.builddirectory)'
     ArtifactName: 'dist'
   displayName: 'Publish Build Artifacts'
