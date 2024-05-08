@@ -18,15 +18,11 @@ steps:
 - script: |
     npm install -g @angular/cli@17.1.2
     npm install
-    ng build --output-path=$(agent.builddirectory)/dist
+    ng build
   displayName: 'npm install and build'
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(agent.builddirectory)/dist'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)/dist'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    PathtoPublish: '$(Build.SourceDirectory)/dist'
     ArtifactName: 'dist'
-    publishLocation: 'Container'
+  displayName: 'Publish Build Artifacts'
