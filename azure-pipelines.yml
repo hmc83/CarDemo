@@ -21,6 +21,17 @@ steps:
 - script: |
     ng build
   displayName: 'ng build'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)/dist'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)/dist'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    ArtifactName: 'dist'
+    publishLocation: 'Container'
 
 # trigger:  
 # - master  
