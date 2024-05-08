@@ -12,17 +12,15 @@ steps:
 
 - script: |
     npm install -g @angular/cli@17.1.2
+  displayName: 'install angular/cli'
+
+- script: |
     npm install
+  displayName: 'npm install'
+
+- script: |
     ng build
-  displayName: 'npm install and build'
-
-# - script: |
-#     npm install
-#   displayName: 'npm install'
-
-# - script: |
-#     ng build
-#   displayName: 'ng build'
+  displayName: 'ng build'
 
 # trigger:  
 # - master  
