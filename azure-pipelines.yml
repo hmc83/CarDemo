@@ -3,20 +3,44 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- master
-
-pool:
-  name: my-personal-computer
-
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '18.13.0'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install -g @angular/cli@17.1.2
-    npm install
-    ng build
-  displayName: 'npm install and build'
+trigger:  
+- master  
+  
+pool:  
+  name: my-personal-computer 
+  
+steps:  
+- task: NodeTool@0  
+  inputs:  
+    versionSpec: '18.13.0'  
+  displayName: 'Install Node.js'  
+- task: Npm@1  
+  displayName: 'Angular CLI'  
+  inputs:  
+    command: custom  
+    verbose: false  
+    customCommand: 'install @angular/cli@17.1.2'  
+- task: Npm@1  
+  displayName: 'npm install'  
+  inputs:  
+    verbose: false  
+  
+- task: Npm@1  
+  displayName: Build  
+  inputs:  
+    command: custom  
+    verbose: false  
+    customCommand: 'run build'  
+  
+- task: CopyPublishBuildArtifacts@1  
+  displayName: 'Copy Publish Artifact: test'  
+  inputs:  
+    CopyRoot: dist  
+    Contents: '**'  
+    ArtifactName: test  
+    ArtifactType: Container  
+  
+- task: DownloadPipelineArtifact@2  
+  displayName: 'Download Pipeline Artifact'  
+  inputs:  
+    targetPath: ' $(Build.ArtifactStagingDirectory)/dist/AngularTest'  
