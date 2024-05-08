@@ -23,13 +23,13 @@ steps:
   displayName: 'ng build'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(agent.builddirectory)/dist'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)/dist'
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: 'dist'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'dist'
     publishLocation: 'Container'
 
