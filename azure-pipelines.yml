@@ -18,10 +18,5 @@ steps:
 - script: |
     npm install -g @angular/cli@17.1.2
     npm install
+    ng build
   displayName: 'npm install and build'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(agent.builddirectory)'
-    ArtifactName: 'dist'
-  displayName: 'Publish Build Artifacts'
