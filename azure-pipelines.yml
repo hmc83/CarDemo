@@ -19,7 +19,7 @@ steps:
   displayName: 'npm install'
 
 - script: |
-    ng build
+    ng build --prod
   displayName: 'ng build'
 
 # trigger:  
