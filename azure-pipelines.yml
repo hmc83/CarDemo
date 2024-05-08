@@ -22,11 +22,11 @@ steps:
     ng build
   displayName: 'ng build'
 
-- task: PublishPipelineArtifact@1
+- task: PublishPipelineArtifact@0
   inputs:
     targetPath: 'dist'
-    artifactName: 'test'
-  displayName: 'Publish Pipeline Artifact: test'
+    artifactName: 'dist'
+  displayName: 'Publish Pipeline Artifact: dist'
 
 # trigger:  
 # - master  
