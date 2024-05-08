@@ -18,7 +18,7 @@ steps:
 - script: |
     npm install -g @angular/cli@17.1.2
     npm install
-    ng build
+    ng build --output-path=$(agent.builddirectory)/dist
   displayName: 'npm install and build'
 - task: CopyFiles@2
   inputs:
