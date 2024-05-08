@@ -16,9 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd hmc83.CarDemo/
     npm install -g @angular/cli@17.1.2
     npm install
-    ng build --prod
+    ng build
   displayName: 'npm install and build'
-  workingDirectory: '$(Build.SourcesDirectory)'
