@@ -24,35 +24,6 @@ steps:
 
 - task: PublishPipelineArtifact@0
   inputs:
-    targetPath: 'dist'
+    targetPath: '$(Build.ArtifactStagingDirectory)/dist'
     artifactName: 'dist'
   displayName: 'Publish Pipeline Artifact: dist'
-
-# trigger:  
-# - master  
-  
-# pool:  
-#   name: my-personal-computer 
-  
-# steps:  
-# - task: NodeTool@0  
-#   inputs:  
-#     versionSpec: '20.11.0'  
-#   displayName: 'Install Node.js'  
-# - task: Npm@1  
-#   displayName: 'Angular CLI'  
-#   inputs:  
-#     command: custom  
-#     verbose: false  
-#     customCommand: 'install @angular/cli@17.1.2'  
-# - task: Npm@1  
-#   displayName: 'npm install'  
-#   inputs:  
-#     verbose: false  
-  
-# - task: Npm@1  
-#   displayName: Build  
-#   inputs:  
-#     command: custom  
-#     verbose: false  
-#     customCommand: 'run build'
