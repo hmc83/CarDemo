@@ -24,6 +24,6 @@ steps:
 
 - task: PublishPipelineArtifact@0
   inputs:
-    targetPath: '$(agent.builddirectory)/dist'
+    targetPath: '$(agent.builddirectory)/s/dist'
     artifactName: 'dist'
   displayName: 'Publish Pipeline Artifact: dist'
