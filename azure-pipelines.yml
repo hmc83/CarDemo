@@ -23,13 +23,13 @@ steps:
   displayName: 'ng build'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'Build.SourcesDirectory'
-    Contents: 'dist'
-    TargetFolder: 'Build.ArtifactStagingDirectory'
+    SourceFolder: '$(Build.SourcesDirectory)/dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/dist'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
-    ArtifactName: 'testing'
+    ArtifactName: 'dist'
     publishLocation: 'Container'
 
 # - task: PublishPipelineArtifact@0
