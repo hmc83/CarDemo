@@ -21,9 +21,14 @@ steps:
 - script: |
     ng build
   displayName: 'ng build'
-
-- task: PublishPipelineArtifact@0
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(agent.builddirectory)/s/dist'
-    artifactName: 'dist'
-  displayName: 'Publish Pipeline Artifact: dist'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    ArtifactName: 'testing'
+    publishLocation: 'Container'
+
+# - task: PublishPipelineArtifact@0
+#   inputs:
+#     targetPath: '$(agent.builddirectory)/s/dist'
+#     artifactName: 'dist'
+#   displayName: 'Publish Pipeline Artifact: dist'
