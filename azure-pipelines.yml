@@ -21,38 +21,19 @@ steps:
 - script: |
     ng build
   displayName: 'ng build'
-
-- task: PublishPipelineArtifact@0
+- task: CopyFiles@2
   inputs:
-    targetPath: 'dist'
-    artifactName: 'dist'
-  displayName: 'Publish Pipeline Artifact: dist'
+    SourceFolder: '$(Build.SourcesDirectory)/dist/car-sales/browser'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/car-sales'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/car-sales'
+    ArtifactName: 'car-sales'
+    publishLocation: 'Container'
 
-# trigger:  
-# - master  
-  
-# pool:  
-#   name: my-personal-computer 
-  
-# steps:  
-# - task: NodeTool@0  
-#   inputs:  
-#     versionSpec: '20.11.0'  
-#   displayName: 'Install Node.js'  
-# - task: Npm@1  
-#   displayName: 'Angular CLI'  
-#   inputs:  
-#     command: custom  
-#     verbose: false  
-#     customCommand: 'install @angular/cli@17.1.2'  
-# - task: Npm@1  
-#   displayName: 'npm install'  
-#   inputs:  
-#     verbose: false  
-  
-# - task: Npm@1  
-#   displayName: Build  
-#   inputs:  
-#     command: custom  
-#     verbose: false  
-#     customCommand: 'run build'
+# - task: PublishPipelineArtifact@0
+#   inputs:
+#     targetPath: '$(agent.builddirectory)/s/dist'
+#     artifactName: 'dist'
+#   displayName: 'Publish Pipeline Artifact: dist'
