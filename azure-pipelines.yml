@@ -25,11 +25,11 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/dist/car-sales/browser'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/car-sales'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/dist'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/car-sales'
-    ArtifactName: 'car-sales'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    ArtifactName: 'dist'
     publishLocation: 'Container'
 
 # - task: PublishPipelineArtifact@0
